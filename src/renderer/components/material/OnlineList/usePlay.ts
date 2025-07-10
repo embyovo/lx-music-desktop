@@ -29,8 +29,8 @@ export default ({ selectedList, props, removeAllSelect, emit }: {
 
       let ids=[]
       const list = await getListMusics(defaultList.id)
-      if (list.length >= 200){
-        for(let i = list.length-1; i > 200; i--) {
+      if (list.length >= 520){
+        for(let i = list.length-1; i > 520; i--) {
           ids.push(list[i].id)
         }
         await removeListMusics({ listId: defaultList.id, ids: ids})
