@@ -30,15 +30,27 @@ export const getListMusicsFromCache = (listId: string | null): LX.Music.MusicInf
 export const setFetchingListStatus = (id: string, status: boolean) => {
   fetchingListStatus[id] = status
 }
-
 export const setUpdateTime = (id: string, time: string) => {
   listUpdateTimes[id] = time
 }
 
+
+
 export const addListMusics = async(id: string, musicInfos: LX.Music.MusicInfo[], addMusicLocationType?: LX.AddMusicLocationType) => {
+  const filteredMusicInfos = musicInfos.map(musicInfo => ({
+    id: musicInfo.id,
+    interval: musicInfo.interval,
+    name: musicInfo.name,
+    singer: musicInfo.singer,
+    source: musicInfo.source,
+    meta: {
+      songId: musicInfo.meta.songId,
+      albumName: musicInfo.meta.albumName,
+      picUrl: musicInfo.meta.picUrl,},
+  })) as LX.Music.MusicInfo[]; // 断言为 MusicInfo 数组
   return addListMusicsAction({
     id,
-    musicInfos: toRaw(musicInfos),
+    musicInfos: toRaw(filteredMusicInfos),
     addMusicLocationType: addMusicLocationType ?? appSetting['list.addMusicLocationType'],
   })
 }

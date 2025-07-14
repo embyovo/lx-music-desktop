@@ -18,6 +18,7 @@ import {
   listMusicClear,
 } from './action'
 import { allMusicList } from './state'
+import {sync} from "@renderer/store";
 
 /**
  * 获取用户列表
@@ -78,6 +79,18 @@ export const getListMusics = async(listId: string | null): Promise<LX.Music.Musi
  * @param data
  */
 export const addListMusics = async(data: LX.List.ListActionMusicAdd) => {
+  const host=(sync.client.host).replace(/\/+$/, '')
+  console.log(data.musicInfos[0].source=='wy')
+  const cookie=localStorage.getItem('cookie') as string
+  if (cookie&&data.musicInfos[0].source=='wy') {
+    const queryString = {'cookie':cookie}
+    for (const item of data.musicInfos) {
+      const id=(item.id).replace(/[^0-9]/g, '');
+      await fetch(`${host}/api/netease/like?id=${id}&${new URLSearchParams(queryString)}`,)
+    }
+
+
+  }
   await rendererInvoke<LX.List.ListActionMusicAdd>(PLAYER_EVENT_NAME.list_music_add, data)
 }
 
