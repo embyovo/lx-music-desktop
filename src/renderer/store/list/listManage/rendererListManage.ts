@@ -80,13 +80,15 @@ export const getListMusics = async(listId: string | null): Promise<LX.Music.Musi
  */
 export const addListMusics = async(data: LX.List.ListActionMusicAdd) => {
   const host=(sync.client.host).replace(/\/+$/, '')
-  console.log(data.musicInfos[0].source=='wy')
   const cookie=localStorage.getItem('cookie') as string
-  if (cookie&&data.musicInfos[0].source=='wy') {
+  if (cookie&&data.id=='love') {
     const queryString = {'cookie':cookie}
     for (const item of data.musicInfos) {
-      const id=(item.id).replace(/[^0-9]/g, '');
-      await fetch(`${host}/api/netease/like?id=${id}&${new URLSearchParams(queryString)}`,)
+      if (item.source=='wy'){
+        const id=(item.id).replace(/[^0-9]/g, '');
+        await fetch(`${host}/api/netease/like?id=${id}&${new URLSearchParams(queryString)}`,)
+      }
+
     }
 
 
