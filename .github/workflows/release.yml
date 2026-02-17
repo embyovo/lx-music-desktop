@@ -44,6 +44,9 @@ jobs:
     name: Windows
     runs-on: windows-latest
     # needs: CheckCode
+    permissions:
+      contents: write  # 关键：允许读写仓库内容（包括 Release）
+      packages: write  # 可选：如果涉及包发布
     steps:
       - name: Check out git repository
         uses: actions/checkout@v4
@@ -85,6 +88,9 @@ jobs:
     name: Windows_7
     runs-on: windows-latest
     # needs: CheckCode
+    permissions:
+      contents: write  # 关键：允许读写仓库内容（包括 Release）
+      packages: write  # 可选：如果涉及包发布
     steps:
       - name: Check out git repository
         uses: actions/checkout@v4
@@ -133,6 +139,9 @@ jobs:
     name: Mac
     runs-on: macos-latest
     # needs: CheckCode
+    permissions:
+      contents: write  # 关键：允许读写仓库内容（包括 Release）
+      packages: write  # 可选：如果涉及包发布
     steps:
       - name: Check out git repository
         uses: actions/checkout@v4
@@ -173,6 +182,9 @@ jobs:
     name: Linux
     runs-on: ubuntu-latest
     # needs: CheckCode
+    permissions:
+      contents: write  # 关键：允许读写仓库内容（包括 Release）
+      packages: write  # 可选：如果涉及包发布
     steps:
       - name: Install package
         run: sudo apt-get update && sudo apt-get install -y rpm libarchive-tools
