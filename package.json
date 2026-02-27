@@ -96,9 +96,9 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "embyovo",    // 你的 GitHub 用户名
-        "repo": "lx-music-desktop",  // 你的仓库名
-        "private": false       // 公开仓库设为 false
+        "owner": "embyovo",  
+        "repo": "lx-music-desktop",  
+        "private": false     
       }
     ],
   "keywords": [
