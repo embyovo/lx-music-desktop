@@ -90,7 +90,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lyswhut/lx-music-desktop.git"
+    "url": "git+https://github.com/embyovo/lx-music-desktop.git"
   },
   "keywords": [
     "music-player",
@@ -103,9 +103,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/lyswhut/lx-music-desktop/issues"
+    "url": "https://github.com/embyovo/lx-music-desktop/issues"
   },
-  "homepage": "https://github.com/lyswhut/lx-music-desktop#readme",
+  "homepage": "https://github.com/embyovo/lx-music-desktop#readme",
   "devDependencies": {
     "@babel/core": "^7.29.0",
     "@babel/eslint-parser": "^7.28.6",
@@ -220,3 +220,4 @@
     "http-cache-semantics": "latest"
   }
 }
+
