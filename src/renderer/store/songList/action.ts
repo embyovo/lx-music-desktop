@@ -128,10 +128,10 @@ export const getAndSetList = async(source: LX.OnlineSource, tabId: string, sortI
     if (result.source == 'wy'){
       result.list[0] = {
         author: '亓',
-        desc: '亓的每日推荐音乐',
+        desc: '网易云每日推荐',
         id: '-1',
-        img: 'https://p2.music.126.net/6sAXHDiGgyAPbEMTIemVlw==/109951168110863128.jpg',
-        name: '亓的每日推荐音乐',
+        img: 'https://ts1.tc.mm.bing.net/th/id/OIP-C.JJ7JGWyXRFK0VfxjsCkrVQHaHa',
+        name: '网易云每日推荐',
         play_count: '666666',
         source: 'wy',
         time: new Date().getFullYear().toString() + '-' + (new Date().getMonth() + 1).toString() + '-' + (new Date().getDate() ).toString(),
