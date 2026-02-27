@@ -92,15 +92,6 @@
     "type": "git",
     "url": "git+https://github.com/embyovo/lx-music-desktop.git"
   },
-  "build": {
-    "publish": [
-      {
-        "provider": "github",
-        "owner": "embyovo",  
-        "repo": "lx-music-desktop",  
-        "private": false     
-      }
-    ],
   "keywords": [
     "music-player",
     "electron-app",
@@ -229,4 +220,4 @@
     "http-cache-semantics": "latest"
   }
 }
-}
+
