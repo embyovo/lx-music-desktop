@@ -27,16 +27,28 @@ export default ({ selectedList, props, removeAllSelect, emit }: {
     if (router.currentRoute.value.fullPath.includes('/songList/detail?source=wy&id=-1')) {
       selectedList.value=props.list
 
-      let ids=[]
       const list = await getListMusics(defaultList.id)
-      if (list.length >= 520){
-        for(let i = list.length-1; i > 520; i--) {
-          ids.push(list[i].id)
-        }
-        await removeListMusics({ listId: defaultList.id, ids: ids})
+      const EXCEED_LIMIT = 520
+
+
+      const selectedIds = selectedList.value.map(item => item.id)
+
+      const deleteSelectedIds = list
+        .filter(item => selectedIds.includes(item.id))
+        .map(item => item.id)
+
+      const exceedIds = list.length > EXCEED_LIMIT
+        ? list.slice(EXCEED_LIMIT).map(item => item.id)
+        : []
+
+      const finalDeleteIds = [...new Set([...deleteSelectedIds, ...exceedIds])]
+
+      if (finalDeleteIds.length > 0) {
+        await removeListMusics({
+          listId: defaultList.id,
+          ids: finalDeleteIds
+        })
       }
-      // await removeListMusics()
-      await addListMusics(defaultList.id,[...selectedList.value] )
 
     }else{
       if (selectedList.value.length && !single) {
