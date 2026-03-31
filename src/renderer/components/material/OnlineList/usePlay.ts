@@ -26,8 +26,8 @@ export default ({ selectedList, props, removeAllSelect, emit }: {
     const defaultListMusics = await getListMusics(defaultList.id)
     if (router.currentRoute.value.fullPath.includes('/songList/detail?source=wy&id=-1')) {
       selectedList.value=props.list
-
-      const list = await getListMusics(defaultList.id)
+      console.log("1")
+      const list = defaultListMusics
       const EXCEED_LIMIT = 520
 
 
@@ -49,7 +49,7 @@ export default ({ selectedList, props, removeAllSelect, emit }: {
           ids: finalDeleteIds
         })
       }
-
+      await addListMusics(defaultList.id,[...selectedList.value] )
     }else{
       if (selectedList.value.length && !single) {
         await addListMusics(defaultList.id, [...selectedList.value])
