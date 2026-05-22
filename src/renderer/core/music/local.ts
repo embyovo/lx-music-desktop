@@ -14,6 +14,7 @@ import {
   getOnlineOtherSourcePicUrl,
   getOtherSource,
 } from './utils'
+import {sync} from "@renderer/store";
 
 
 const getOtherSourceByLocal = async<T>(musicInfo: LX.Music.MusicInfoLocal, handler: (infos: LX.Music.MusicInfoOnline[]) => Promise<T>) => {
@@ -76,6 +77,27 @@ export const getMusicUrl = async({ musicInfo, isRefresh, allowToggleSource = tru
     const path = await getLocalFilePath(musicInfo)
     if (path) return encodePath(path)
   }
+
+  try {
+    const host=(sync.client.host).replace(/\/+$/, '')
+    const cookie = localStorage.getItem('cookie') || ''
+    if (!cookie) {
+      console.warn('⚠️ 未登录网易云，无法同步到云盘')
+      return ""
+    }
+    const queryString = {'cookie':cookie}
+    const response = await fetch(`${host}/api/netease/user/cloud?${new URLSearchParams(queryString)}`, {
+      method: 'GET',
+    })
+    const data = (await response.json()).data
+    const matchSongId= (data.filter((item:any) => item.fileName.includes(musicInfo.name)))[0].songId
+    const resSongDetail = await fetch(`${host}/api/netease/song/url?id=${matchSongId}&${new URLSearchParams(queryString)}`, {
+      method: 'GET',
+    })
+    const songDetail = ((await resSongDetail.json()).data)[0]
+
+    return songDetail.url
+  }catch {}
 
   try {
     return await getOnlineOtherSourceMusicUrlByLocal(musicInfo, isRefresh).then(({ url, quality, isFromCache }) => {
