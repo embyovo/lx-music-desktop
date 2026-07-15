@@ -34,7 +34,7 @@ const handle_focus = () => {
     node.classList.remove(cssModule.hover)
   }
 }
-const getBtnEl = (el) => el.tagName == 'BUTTON' || !el ? el : getBtnEl(el.parentNode)
+const getBtnEl = (el) => !el || el.tagName == 'BUTTON' ? el : getBtnEl(el.parentNode)
 const handle_mouseover = (event) => {
   const btn = getBtnEl(event.target)
   if (!btn) return
@@ -129,14 +129,16 @@ const fullscreenExit = () => {
     button {
       width: 46px;
       height: 30px;
-      color: var(--color-font-label);
-      transition: background-color 0.2s ease-in-out;
+      color: rgba(255, 255, 255, .94);
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .55));
+      transition: background-color 0.2s ease-in-out, color .2s ease-in-out;
 
       &.hover {
-        background-color: var(--color-button-background-hover);
+        color: #fff;
+        background-color: rgba(255, 255, 255, .2);
 
         &.close {
-          background-color: var(--color-btn-close);
+          background-color: #e75252;
         }
       }
     }

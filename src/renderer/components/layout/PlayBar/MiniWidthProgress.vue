@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.player">
+  <div :class="$style.player" @click="showPlayerDetail">
     <div :class="$style.picContent" :aria-label="$t('player__pic_tip')" @contextmenu="handleToMusicLocation" @click="showPlayerDetail">
       <img v-if="musicInfo.pic" :src="musicInfo.pic" decoding="async" @error="imgError">
       <div v-else :class="$style.emptyPic">L<span>X</span></div>
@@ -20,9 +20,7 @@
         </div>
       </div>
     </div> -->
-    <play-progress />
-    <control-btns />
-    <div :class="$style.playBtnContent">
+    <div :class="$style.playBtnContent" @click.stop>
       <div :class="$style.playBtn" :aria-label="$t('player__prev')" @click="playPrev()">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" height="100%" viewBox="0 0 1024 1024" space="preserve">
           <use xlink:href="#icon-prevMusic" />
@@ -42,6 +40,8 @@
         </svg>
       </div>
     </div>
+    <play-progress />
+    <control-btns @click.stop />
   </div>
 </template>
 
@@ -153,34 +153,24 @@ export default {
 .player {
   position: relative;
   height: @height-player;
-  border-top: 1px solid var(--color-primary-alpha-900);
   box-sizing: border-box;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   contain: strict;
-  padding: 6px;
+  padding: 0 28px 0 20px;
   z-index: 2;
-  // box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  background: transparent;
+  border-top: 0;
   * {
     box-sizing: border-box;
-  }
-
-  &:before {
-    .mixin-after();
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-main-background);
-    opacity: .9;
-    z-index: -1;
   }
 }
 
 .picContent {
-  height: 100%;
-  aspect-ratio: 1 / 1;
+  width: 66px;
+  height: 66px;
 
   // color: var(--color-primary);
   // transition: @transition-normal;
@@ -191,7 +181,7 @@ export default {
   // transition-property: opacity;
   display: flex;
   justify-content: center;
-  // align-items: center;
+  align-items: center;
   cursor: pointer;
 
   &:hover {
@@ -213,14 +203,14 @@ export default {
   }
 
   .emptyPic {
-    background-color: var(--color-primary-light-900-alpha-200);
+    background-color: #f5f5f5;
     border-radius: @radius-border;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-primary-light-400-alpha-200);
+    color: #cccccc;
     user-select: none;
     font-size: 20px;
     font-family: Consolas, "Courier New", monospace;
@@ -233,7 +223,7 @@ export default {
 
 .infoContent {
   padding: 0 10px;
-  flex: auto;
+  flex: 0 1 250px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -246,8 +236,9 @@ export default {
 
 .title {
   max-width: 100%;
-  font-size: 12px;
-  color: var(--color-font-label);
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
   .mixin-ellipsis-1();
 }
 .status {
@@ -255,6 +246,7 @@ export default {
   height: 23px;
   .mixin-ellipsis-1();
   max-width: 100%;
+  color: rgba(255, 255, 255, .68);
 }
 
 // .timeContainer {
@@ -310,18 +302,21 @@ export default {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  padding-left: 10px;
-  padding-right: 15px;
-  gap: 18px;
+  gap: 22px;
+  position: absolute;
+  left: 44%;
+  top: 0;
+  transform: translateX(-50%);
 }
 
 .playBtn {
   flex: none;
-  height: 52%;
+  width: 25px;
+  height: 25px;
   // margin-top: -2px;
   transition: @transition-fast;
   transition-property: color, opacity;
-  color: var(--color-button-font);
+  color: #fff;
   opacity: 1;
   cursor: pointer;
 
@@ -334,6 +329,16 @@ export default {
   }
   &:active {
     opacity: 0.6;
+  }
+
+  &:nth-child(2) {
+    width: 52px;
+    height: 52px;
+    padding: 15px;
+    color: #fff;
+    background: #aaf4c3;
+    border-radius: 50%;
+    box-shadow: 0 5px 20px rgba(48, 210, 104, .18);
   }
 }
 

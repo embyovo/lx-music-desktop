@@ -55,45 +55,48 @@ export default {
 @import '@renderer/assets/styles/layout.less';
 
 .controlBtn {
-  padding-left: 20px;
-  padding-right: 10px;
+  padding-left: 16px;
+  padding-right: 4px;
   flex: none;
+  margin-left: auto;
   display: flex;
   flex-flow: row nowrap;
-  gap: 10px;
+  gap: 8px;
 
   button {
-    color: var(--color-button-font);
+    color: rgba(255, 255, 255, .86);
   }
 }
 
 .titleBtn {
   flex: none;
   height: 100%;
-  width: 24px;
+  width: 28px;
   transition: @transition-fast;
-  transition-property: color, opacity;
-  // color: var(--color-button-font);
+  transition-property: color, opacity, background-color;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   background-color: transparent;
   border: none;
-  width: 24px;
   padding: 0;
+  border-radius: @form-radius;
 
-  opacity: .6;
+  opacity: .65;
   cursor: pointer;
 
   svg {
-    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.2));
+    filter: none;
   }
   &:hover {
     opacity: 1;
+    color: var(--color-primary);
+    background-color: rgba(255, 255, 255, .12);
   }
   &:active {
     opacity: 1;
+    background-color: rgba(255, 255, 255, .18);
   }
 }
 

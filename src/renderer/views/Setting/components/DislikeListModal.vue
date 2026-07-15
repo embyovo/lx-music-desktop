@@ -84,7 +84,7 @@ export default {
   outline: none;
   border-radius: 4px;
   padding: 5px;
-  background-color: var(--color-primary-light-200-alpha-900);
+  background-color: #f5f5f5;
   box-sizing: border-box;
   font-family: inherit;
   resize: none;

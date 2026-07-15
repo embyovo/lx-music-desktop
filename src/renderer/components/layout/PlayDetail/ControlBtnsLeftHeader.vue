@@ -122,9 +122,9 @@ const fullscreenExit = () => {
     flex-direction: row-reverse;
     height: @height-toolbar * .7;
     transition: opacity @transition-normal;
-    opacity: .5;
+    opacity: .92;
     &.hover {
-      opacity: .8;
+      opacity: 1;
       .controBtnIcon {
         opacity: 1;
       }
@@ -134,7 +134,8 @@ const fullscreenExit = () => {
       width: @control-btn-width;
       height: @control-btn-width;
       border-radius: 50%;
-      color: var(--color-font);
+      color: #fff;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .55));
       + button {
         margin-right: (@control-btn-width / 2);
       }

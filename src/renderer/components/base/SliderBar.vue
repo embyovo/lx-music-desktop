@@ -160,7 +160,7 @@ export default {
   // border-radius: @radius-progress-border;
   transition-duration: 0.2s;
   background-color: var(--color-button-font);
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  box-shadow: @shadow-sm;
 }
 
 .sliderMask {

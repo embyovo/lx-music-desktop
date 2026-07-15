@@ -72,6 +72,7 @@ const icon = computed(() => {
   display: flex;
   flex-flow: column nowrap;
   padding: 0;
+  border-radius: @form-radius;
 
   svg {
     transition: opacity @transition-fast;

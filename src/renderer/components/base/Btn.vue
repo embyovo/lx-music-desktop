@@ -35,11 +35,11 @@ export default {
   border: none;
   border-radius: @form-radius;
   cursor: pointer;
-  padding: 8px 15px;
-  color: var(--color-button-font);
+  padding: 8px 20px;
+  color: #ffffff;
   outline: none;
-  transition: background-color 0.2s ease;
-  background-color: var(--color-button-background);
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  background-color: var(--color-primary);
   font-size: 14px;
   &[disabled] {
     opacity: .4;
@@ -48,13 +48,15 @@ export default {
 
   &.outline {
     background-color: transparent;
+    border: 1px solid #eeeeee;
+    color: #666666;
   }
 
   &:hover {
-    background-color: var(--color-button-background-hover);
+    opacity: .9;
   }
   &:active {
-    background-color: var(--color-button-background-active);
+    opacity: .8;
   }
 }
 

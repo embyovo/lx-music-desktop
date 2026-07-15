@@ -107,7 +107,7 @@ export default {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 2px;
+    height: 3px;
     border-radius: 20px;
     background-color: transparent;
     transform: translateY(-4px);

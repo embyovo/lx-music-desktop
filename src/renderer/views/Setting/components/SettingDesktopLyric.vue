@@ -326,7 +326,7 @@ export default {
   cursor: pointer;
   transition: @transition-fast !important;
   transition-property: background-color, opacity !important;
-  box-shadow: 0 0 3px var(--color-primary-light-100-alpha-300);
+  box-shadow: @shadow-sm;
   &:hover {
     opacity: .7;
   }

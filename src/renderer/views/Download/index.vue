@@ -252,6 +252,7 @@ export default {
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
+  gap: @spacing-md;
 
   :global(.list-item) {
     &.active {

@@ -4,8 +4,8 @@
     <div id="right">
       <layout-toolbar id="toolbar" />
       <layout-view id="view" />
-      <layout-play-bar id="player" />
     </div>
+    <layout-play-bar id="player" />
     <layout-icons />
     <layout-change-log-modal />
     <layout-update-modal />
@@ -100,7 +100,7 @@ body {
   background-color: var(--color-content-background);
 
   #body {
-    border: 1Px solid var(--color-primary-light-500);
+    border: 1Px solid #eeeeee;
   }
 
   #right {
@@ -131,27 +131,35 @@ body {
 #left {
   flex: none;
   width: @width-app-left;
+  background: linear-gradient(180deg, #e8fff4 0%, #f7fffb 30%, #ffffff 72%);
+  transition: background-color @transition-normal;
 }
 #right {
   flex: auto;
   display: flex;
   flex-flow: column nowrap;
   transition: background-color @transition-normal;
-  background-color: var(--color-main-background);
-
-  border-top-left-radius: @radius-border;
-  border-bottom-left-radius: @radius-border;
+  background-color: #ffffff;
   overflow: hidden;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  padding-bottom: @height-player;
 }
-#toolbar, #player {
+#toolbar {
   flex: none;
+}
+#player {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 6;
 }
 #view {
   position: relative;
   flex: auto;
-  // display: flex;
   min-height: 0;
+  padding: @padding-view-y @padding-view-x;
+  box-sizing: border-box;
 }
 
 .view-container {

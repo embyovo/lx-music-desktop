@@ -91,6 +91,7 @@ export default {
   height: 100%;
   display: flex;
   position: relative;
+  gap: @spacing-md;
 }
 .header {
   flex: none;
@@ -115,9 +116,13 @@ export default {
 
 .lists {
   flex: none;
-  width: 14.8%;
+  width: 200px;
   display: flex;
   flex-flow: column nowrap;
+  border-radius: @radius-card;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: @shadow-sm;
 }
 .listsHeader {
   position: relative;
@@ -138,15 +143,15 @@ export default {
   }
   :global(.label-content) {
     background-color: transparent !important;
-    line-height: 38px;
-    height: 38px;
+    line-height: 44px;
+    height: 44px;
     border-radius: 0;
     &:hover {
       background: none !important;
     }
   }
   :global(.label) {
-    color: var(--color-font) !important;
+    color: #333333 !important;
   }
   :global(.icon) {
     opacity: .6;
@@ -155,22 +160,22 @@ export default {
 
   :global(.selection-list) {
     max-height: 500px;
-    box-shadow: 0 1px 8px 0 rgba(0,0,0,.2);
+    box-shadow: @shadow-lg;
+    border-radius: @radius-border;
+    background-color: #ffffff;
     li {
-      // background-color: var(--color-main-background);
       line-height: 38px;
       font-size: 13px;
+      color: #333333;
       &:hover {
-        background-color: var(--color-button-background-hover);
+        background-color: #f5f5f5;
       }
       &:active {
-        background-color: var(--color-button-background-active);
+        background-color: #f0f0f0;
       }
     }
   }
-  // line-height: 38px;
-  // padding: 0 10px;
-  border-bottom: var(--color-list-header-border-bottom);
+  border-bottom: 1px solid #eeeeee;
   flex: none;
 }
 
@@ -181,9 +186,9 @@ export default {
   flex: auto;
   display: flex;
   flex-flow: column nowrap;
-  // .noItem {
-
-  // }
+  border-radius: @radius-card;
+  background-color: #ffffff;
+  box-shadow: @shadow-sm;
 }
 
 </style>

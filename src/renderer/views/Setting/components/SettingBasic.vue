@@ -501,8 +501,8 @@ export default {
           transition: .3s ease;
           transition-property: border, color;
           box-sizing: border-box;
-          border: 1Px dashed var(--color-primary-light-100-alpha-300);
-          color: var(--color-primary-light-100-alpha-300);
+          border: 1Px dashed #cccccc;
+          color: #999999;
           position: relative;
           height: 100%;
           overflow: hidden;

@@ -166,33 +166,32 @@ export default {
 @import '@renderer/assets/styles/layout.less';
 
 .container {
-  // position: absolute;
-  // left: 0;
-  // top: 0;
-  // width: 100%;
-  // height: 100%;
   display: flex;
   flex-flow: column nowrap;
+  gap: @spacing-md;
 }
 
 .songListHeader {
   flex: none;
   display: flex;
   flex-flow: row nowrap;
-  height: 80px;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: @radius-card;
+  box-shadow: @shadow-sm;
 }
 .songListHeaderLeft {
   flex: none;
-  margin-left: 15px;
-  height: 100%;
-  aspect-ratio: 1 / 1;
+  width: 120px;
+  height: 120px;
   position: relative;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: @radius-cover;
   background-position: center;
   background-size: cover;
-  opacity: .9;
-  box-shadow: 0 0 2px 0 rgba(0,0,0,.2);
+  box-shadow: @shadow-sm;
 }
 .playNum {
   position: absolute;
@@ -209,37 +208,30 @@ export default {
 
 .songListHeaderMiddle {
   flex: auto;
-  padding: 2px 7px;
   min-width: 0;
   h3 {
-    .mixin-ellipsis-1();
-    line-height: 1.2;
-    padding-bottom: 5px;
-    color: var(--color-font);
+    .mixin-ellipsis-2();
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+    padding-bottom: 8px;
+    color: #1a1a1a;
   }
   p {
     .mixin-ellipsis(3);
-    font-size: 12px;
-    line-height: 1.2;
-    color: var(--color-font-label);
+    font-size: 13px;
+    line-height: 1.5;
+    color: #666666;
   }
 }
 .songListHeaderRight {
   flex: none;
   display: flex;
   align-items: center;
-  padding-right: 15px;
+  gap: 10px;
 
   .headerRightBtn {
-    border-radius: 0;
-    &:first-child {
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px;
-    }
-    &:last-child {
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
-    }
+    border-radius: @form-radius;
   }
 }
 
@@ -249,6 +241,10 @@ export default {
   min-height: 0;
   flex: auto;
   height: 100%;
+  background-color: #ffffff;
+  border-radius: @radius-card;
+  box-shadow: @shadow-sm;
+  overflow: hidden;
 }
 </style>
 

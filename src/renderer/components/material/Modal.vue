@@ -269,8 +269,8 @@ export default {
 
 .content {
   position: relative;
-  border-radius: 4px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, .25);
+  border-radius: @radius-card;
+  box-shadow: @shadow-lg;
   overflow: hidden;
   // max-height: 80%;
   // max-width: 76%;
@@ -284,24 +284,37 @@ export default {
 
 .header {
   flex: none;
-  background-color: var(--color-primary-light-100-alpha-100);
+  position: relative;
+  background-color: #f5f5f5;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  height: 18px;
+  height: 36px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(135deg, var(--color-primary-gradient-start), var(--color-primary-gradient-end));
+    opacity: .12;
+    pointer-events: none;
+  }
 
   button {
+    position: relative;
+    z-index: 1;
     border: none;
     cursor: pointer;
-    padding: 4px 7px;
+    padding: 8px 10px;
     background-color: transparent;
     color: var(--color-primary-dark-500-alpha-500);
     outline: none;
     transition: background-color 0.2s ease;
     line-height: 0;
+    border-radius: @form-radius;
 
     svg {
-      height: .7em;
+      height: 1em;
     }
 
     &:hover {

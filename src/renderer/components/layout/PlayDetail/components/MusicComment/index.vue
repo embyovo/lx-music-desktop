@@ -288,7 +288,7 @@ export default {
 }
 .commentMain {
   flex: auto;
-  background-color: var(--color-primary-light-400-alpha-700);
+  background-color: #f5f5f5;
   border-radius: 4px;
   display: flex;
   flex-direction: column;

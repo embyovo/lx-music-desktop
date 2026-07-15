@@ -166,7 +166,7 @@ export default {
     margin-right: 10px;
   }
 
-  background-color: var(--color-primary-light-500-alpha-700);
+  background-color: #f5f5f5;
 }
 
 

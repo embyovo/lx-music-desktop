@@ -93,9 +93,10 @@ export default {
   transition-property: transform, opacity;
   border-radius: @radius-border;
   background-color: var(--color-content-background);
-  box-shadow: 0 1px 8px 0 rgba(0,0,0,.2);
+  box-shadow: @shadow-lg;
   z-index: 10;
   overflow: hidden;
+  padding: 4px 0;
   // will-change: transform;
 }
 .listItem {
@@ -104,6 +105,8 @@ export default {
   line-height: 34px;
   // color: var(--color-button-font);
   padding: 0 10px;
+  margin: 0 4px;
+  border-radius: @form-radius;
   text-align: center;
   outline: none;
   transition: @transition-normal;

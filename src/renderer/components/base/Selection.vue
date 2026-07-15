@@ -187,7 +187,7 @@ export default {
   transition-property: transform, opacity;
   z-index: 10;
   border-radius: @form-radius;
-  box-shadow: 0 0 4px rgba(0, 0, 0, .15);
+  box-shadow: @shadow-md;
   overflow: auto;
   max-height: 200px;
 }
@@ -201,6 +201,8 @@ export default {
   background-color: transparent;
   box-sizing: border-box;
   .mixin-ellipsis-1();
+  margin: 2px 4px;
+  border-radius: @form-radius;
 
   &:hover {
     background-color: var(--color-button-background-hover);

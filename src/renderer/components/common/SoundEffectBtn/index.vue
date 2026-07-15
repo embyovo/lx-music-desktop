@@ -118,7 +118,7 @@ watch(visible, (visible) => {
     position: absolute;
     left: 50%;
     height: 100%;
-    border-left: 1px dashed var(--color-primary-light-100-alpha-700);
+    border-left: 1px dashed #eeeeee;
   }
   // width: 400px;
 

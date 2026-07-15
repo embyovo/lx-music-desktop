@@ -197,7 +197,7 @@ export default {
 @import '@renderer/assets/styles/layout.less';
 
 .right {
-  flex: 0 0 60%;
+  flex: 0 0 57%;
   // padding: 0 30px;
   position: relative;
   transition: flex-basis @transition-normal;
@@ -209,12 +209,13 @@ export default {
   font-size: var(--playDetail-lrc-font-size, 16px);
   -webkit-mask-image: linear-gradient(transparent 0%, #fff 20%,  #fff 80%, transparent 100%);
   cursor: grab;
+  color: rgba(255, 255, 255, .62);
   &.draging {
     cursor: grabbing;
   }
   :global {
     .font-lrc {
-      color: var(--color-450);
+      color: rgba(255, 255, 255, .45);
     }
     .line-content {
       line-height: 1.2;
@@ -235,7 +236,7 @@ export default {
         }
       }
       &.line-mode.active .font-lrc, &.font-mode.played .font-lrc {
-        color: var(--color-primary-dark-200);
+        color: rgba(255, 255, 255, .88);
       }
       &.font-mode .extended .font-lrc {
         transition: @transition-slow;

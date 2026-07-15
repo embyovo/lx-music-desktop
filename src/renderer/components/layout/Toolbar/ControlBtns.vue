@@ -5,6 +5,11 @@
         <use xlink:href="#icon-window-minimize-2" />
       </svg>
     </button>
+    <button type="button" :class="[$style.btn, $style.max]" aria-label="最大化或还原" ignore-tip title="最大化或还原" @click="maxWindow">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="48%" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5h14v14H5V5zm2 2v10h10V7H7z" fill="currentColor" />
+      </svg>
+    </button>
     <button type="button" :class="[$style.btn, $style.close]" :aria-label="$t('close')" ignore-tip :title="$t('close')" @click="closeWindow">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" height="60%" viewBox="0 0 24 24" space="preserve">
         <use xlink:href="#icon-window-close-2" />
@@ -14,7 +19,7 @@
 </template>
 
 <script setup>
-import { minWindow, closeWindow } from '@renderer/utils/ipc'
+import { minWindow, maxWindow, closeWindow } from '@renderer/utils/ipc'
 import { onMounted, onBeforeUnmount, ref, useCssModule } from '@common/utils/vueTools'
 // import { getRandom } from '../../utils'
 import { isFullscreen } from '@renderer/store'
@@ -30,7 +35,7 @@ const handle_focus = () => {
     node.classList.remove(cssModule.hover)
   }
 }
-const getBtnEl = (el) => el.tagName == 'BUTTON' || !el ? el : getBtnEl(el.parentNode)
+const getBtnEl = (el) => !el || el.tagName == 'BUTTON' ? el : getBtnEl(el.parentNode)
 const handle_mouseover = (event) => {
   const btn = getBtnEl(event.target)
   if (!btn) return
@@ -62,7 +67,7 @@ onBeforeUnmount(() => {
 
 .control {
   display: flex;
-  align-self: flex-start;
+  align-self: center;
   -webkit-app-region: no-drag;
   height: 30px;
 
@@ -71,7 +76,7 @@ onBeforeUnmount(() => {
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 46px;
+    width: 40px;
     height: 30px;
     background: none;
     border: none;
@@ -80,6 +85,7 @@ onBeforeUnmount(() => {
     cursor: pointer;
     color: var(--color-font-label);
     transition: background-color 0.2s ease-in-out;
+    border-radius: @form-radius;
     &.hover {
       &.min, &.max {
         background-color: var(--color-button-background-hover);

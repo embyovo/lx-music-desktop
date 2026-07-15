@@ -124,20 +124,21 @@ export default {
   display: flex;
   flex-flow: column nowrap;
   position: relative;
+  gap: @spacing-md;
 }
 .header {
   flex: none;
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
-  // padding-right: 5px;
-  // box-sizing: border-box;
-  padding-bottom: 5px;
+  align-items: center;
+  padding-bottom: 4px;
 }
 .left {
   flex: auto;
   display: flex;
   flex-flow: row nowrap;
+  gap: @spacing-sm;
 }
 
 .btn {
@@ -194,9 +195,9 @@ export default {
 
     .selection-list {
       max-height: 500px;
-      box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
+      box-shadow: @shadow-lg;
+      border-radius: @radius-border;
       li {
-        // background-color: var(--color-main-background);
         text-align: center;
         line-height: 38px;
         font-size: 13px;

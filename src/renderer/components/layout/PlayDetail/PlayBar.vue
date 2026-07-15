@@ -1,18 +1,19 @@
 <template>
   <div :class="$style.footer">
-    <div :class="$style.footerLeft">
-      <control-btns />
-      <div :class="$style.progressContainer">
-        <div :class="$style.progressContent">
-          <common-progress-bar
-            :class-name="$style.progress"
-            :progress="progress"
-            :handle-transition-end="handleTransitionEnd"
-            :is-active-transition="isActiveTransition"
-          />
-        </div>
+    <div :class="$style.progressContainer">
+      <common-progress-bar
+        :class-name="$style.progress"
+        :progress="progress"
+        :handle-transition-end="handleTransitionEnd"
+        :is-active-transition="isActiveTransition"
+      />
+    </div>
+    <div :class="$style.trackInfo">
+      <img v-if="musicInfo.pic" :src="musicInfo.pic">
+      <div :class="$style.trackMeta">
+        <strong>{{ musicInfo.name }}</strong>
+        <span>{{ musicInfo.singer }}</span>
       </div>
-      <div :class="$style.timeLabel"><span :class="$style.status" style="margin-right: 15px">{{ status }}</span><span>{{ nowPlayTimeStr }}</span><span style="margin: 0 5px;">/</span><span>{{ maxPlayTimeStr }}</span></div>
     </div>
     <div :class="$style.playControl">
       <div :class="$style.playBtn" :aria-label="$t('player__prev')" @click="playPrev()">
@@ -34,12 +35,16 @@
         </svg>
       </div>
     </div>
+    <div :class="$style.footerRight">
+      <div :class="$style.timeLabel"><span>{{ nowPlayTimeStr }}</span><span style="margin: 0 5px;">/</span><span>{{ maxPlayTimeStr }}</span></div>
+      <control-btns />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { playNext, playPrev, togglePlay } from '@renderer/core/player'
-import { status, isPlay } from '@renderer/store/player/state'
+import { isPlay, musicInfo } from '@renderer/store/player/state'
 import usePlayProgress from '@renderer/utils/compositions/usePlayProgress'
 
 import ControlBtns from './components/ControlBtns.vue'
@@ -58,33 +63,44 @@ const {
 @import '@renderer/assets/styles/layout.less';
 
 .footer {
-  flex: 0 0 100px;
+  flex: 0 0 92px;
   overflow: hidden;
   display: flex;
   align-items: center;
+  position: relative;
+  padding: 0 34px 0 48px;
+  color: rgba(255, 255, 255, .88);
+  background: rgba(52, 74, 19, .28);
+  backdrop-filter: blur(16px);
 }
-.footerLeft {
-  flex: auto;
+.trackInfo {
+  width: 340px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  overflow: hidden;
+  img { width: 62px; height: 62px; object-fit: cover; border-radius: 5px; }
+}
+
+.trackMeta {
+  min-width: 0;
   display: flex;
   flex-flow: column nowrap;
-  padding: 13px 13px 13px 30px;
-  overflow: hidden;
+  gap: 5px;
+  strong, span { .mixin-ellipsis-1(); }
+  strong { font-size: 16px; }
+  span { font-size: 13px; color: rgba(255,255,255,.68); }
 }
 
 .progressContainer {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
-  position: relative;
-  padding: 3px 0;
-}
-
-.progressContent {
-  position: relative;
-  height: 16px;
-  padding: 5px 0;
-  width: 100%;
+  height: 2px;
 }
 .progress {
-  height: 100%;
+  height: 2px;
 }
 
 .barTransition {
@@ -93,41 +109,39 @@ const {
   transition-duration: 0.2s;
 }
 .timeLabel {
-  width: 100%;
-  height: 18px;
+  flex: none;
   display: flex;
+  color: rgba(255,255,255,.82);
   span {
     font-size: 13px;
   }
 }
-.status {
-  flex: auto;
-}
 
 .playControl {
-  flex: none;
-  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  height: 92px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  padding: 0 25px;
-  color: var(--color-button-font);
+  gap: 22px;
+  color: #fff;
 }
 .playBtn {
-  height: 40%;
-  padding: 5px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
   cursor: pointer;
   flex: none;
   // transition: @transition-normal;
   // transition-property: color;
-  color: var(--color-button-font);
+  color: #fff;
   transition: opacity 0.2s ease;
   opacity: 1;
   cursor: pointer;
 
-  +.playBtn {
-    margin-left: 10px;
-  }
   svg {
     fill: currentColor;
     filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.2));
@@ -138,6 +152,21 @@ const {
   &:active {
     opacity: 0.6;
   }
+  &:nth-child(2) {
+    width: 52px;
+    height: 52px;
+    padding: 15px;
+    color: #fff;
+    border-radius: 50%;
+    background: rgba(255,255,255,.22);
+  }
+}
+
+.footerRight {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
 }
 
 </style>

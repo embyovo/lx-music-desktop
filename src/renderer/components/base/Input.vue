@@ -96,10 +96,11 @@ export default {
   border: none;
   border-radius: @form-radius;
   padding: 7px 8px;
-  color: var(--color-button-font);
+  color: #333333;
   outline: none;
-  transition: background-color 0.2s ease;
-  background-color: var(--color-primary-background);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: #f5f6f5;
+  border: 1px solid #e8ebe9;
   font-size: 13.3px;
 
   &::-webkit-outer-spin-button,
@@ -112,8 +113,15 @@ export default {
     opacity: .4;
   }
 
-  &:hover, &:focus {
-    background-color: var(--color-primary-background-hover);
+  &:hover {
+    color: #222222;
+    background-color: #eef8f2;
+    border-color: var(--color-primary-alpha-700);
+  }
+  &:focus {
+    color: #222222;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px var(--color-primary-alpha-700);
   }
   &:active {
     background-color: var(--color-primary-background-active);

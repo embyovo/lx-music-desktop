@@ -614,7 +614,7 @@ export default {
   cursor: pointer;
   transition: @transition-fast !important;
   transition-property: background-color, opacity !important;
-  box-shadow: 0 0 3px var(--color-primary-light-100-alpha-300);
+  box-shadow: @shadow-sm;
   &:hover {
     opacity: .7;
   }
@@ -634,12 +634,12 @@ export default {
 .bgImg {
   width: 100%;
   height: 60px;
-  border: 1Px dashed var(--color-primary-light-100-alpha-300);
+  border: 1Px dashed #cccccc;
   transition: .3s ease;
   transition-property: border, color;
   box-sizing: border-box;
-  border: 1px dashed var(--color-primary-light-100-alpha-300);
-  color: var(--color-primary-light-100-alpha-300);
+  border: 1px dashed #cccccc;
+  color: #999999;
   position: relative;
   border-radius: 5px;
   display: flex;

@@ -11,9 +11,9 @@ const defaultThemes = [
     isDark: false,
     isDarkFont: false,
     config: {
-      primary: 'rgb(77, 175, 124)',
-      font: 'rgb(33, 33, 33)',
-      '--color-app-background': 'var(--color-primary-light-600-alpha-700)',
+      primary: 'rgb(52, 208, 102)',
+      font: 'rgb(26, 26, 26)',
+      '--color-app-background': '#ffffff',
       '--color-main-background': 'rgba(255, 255, 255, 1)',
       '--color-nav-font': 'var(--color-primary)',
       '--background-image': 'none',

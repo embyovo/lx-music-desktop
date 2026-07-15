@@ -119,40 +119,41 @@ defineExpose({
   flex-flow: column nowrap;
   font-size: 14px;
   box-sizing: border-box;
-  padding: 15px 15px 0;
+  padding: 16px;
 
   ul {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    gap: 16px;
   }
 }
 .item {
-  max-width: 360px;
-  width: 32%;
+  width: calc((100% - 48px) / 4);
+  max-width: 280px;
   box-sizing: border-box;
   display: flex;
-  // flex-flow: column nowrap;
-  // padding: 10px;
-  margin-bottom: 20px;
+  flex-flow: column nowrap;
+  margin-bottom: 4px;
   cursor: pointer;
-  transition: opacity @transition-normal;
+  transition: transform @transition-normal, box-shadow @transition-normal;
+  background-color: #ffffff;
+  border-radius: @radius-card;
+  overflow: hidden;
+  box-shadow: @shadow-sm;
   &:hover {
-    opacity: .7;
+    transform: translateY(-2px);
+    box-shadow: @shadow-md;
   }
 }
 .image {
   flex: none;
-  width: 40%;
+  width: 100%;
   display: flex;
   background-position: center;
   background-size: cover;
-  border-radius: 4px;
+  border-radius: 0;
   overflow: hidden;
-  opacity: .9;
   aspect-ratio: 1 / 1;
-
-  box-shadow: 0 0 2px 0 rgba(0,0,0,.2);
 }
 .img {
   width: 100%;
@@ -162,27 +163,27 @@ defineExpose({
 
 .desc {
   flex: auto;
-  padding: 2px 15px 2px 7px;
+  padding: 12px 14px;
   overflow: hidden;
   h4 {
     font-size: 14px;
-    // height: 2.6em;
-    text-align: justify;
-    line-height: 1.3;
+    font-weight: 600;
+    text-align: left;
+    line-height: 1.4;
+    color: #1a1a1a;
     .mixin-ellipsis-2();
   }
 }
 .songlist_info {
   display: flex;
   flex-flow: row nowrap;
-  gap: 15px;
+  gap: 12px;
   margin-top: 8px;
   font-size: 12px;
   .mixin-ellipsis-1();
-  text-align: justify;
+  text-align: left;
   line-height: 1.2;
-  // text-indent: 24px;
-  color: var(--color-font-label);
+  color: #999999;
   svg {
     margin-right: 2px;
   }
@@ -191,19 +192,17 @@ defineExpose({
   margin-top: 6px;
   font-size: 12px;
   .mixin-ellipsis-1();
-  text-align: justify;
+  text-align: left;
   line-height: 1.3;
-  // text-indent: 24px;
-  color: var(--color-font-label);
+  color: #666666;
 }
 .time {
   margin-top: 3px;
   font-size: 12px;
   .mixin-ellipsis-1();
-  text-align: justify;
+  text-align: left;
   line-height: 1.3;
-  // text-indent: 24px;
-  color: var(--color-font-label);
+  color: #999999;
 }
 .pagination {
   text-align: center;

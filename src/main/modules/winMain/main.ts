@@ -82,8 +82,8 @@ export const createWindow = () => {
     hasShadow: global.envParams.cmdParams.dt,
     // enableRemoteModule: false,
     // icon: join(global.__static, isWin ? 'icons/256x256.ico' : 'icons/512x512.png'),
-    resizable: false,
-    maximizable: false,
+    resizable: true,
+    maximizable: true,
     fullscreenable: true,
     roundedCorners: global.envParams.cmdParams.dt,
     show: false,
@@ -175,7 +175,7 @@ export const minimize = () => {
 }
 export const maximize = () => {
   if (!browserWindow) return
-  browserWindow.maximize()
+  browserWindow.isMaximized() ? browserWindow.unmaximize() : browserWindow.maximize()
 }
 export const unmaximize = () => {
   if (!browserWindow) return

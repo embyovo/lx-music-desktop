@@ -121,7 +121,7 @@ onBeforeUnmount(() => {
   // left: 8px;
   // margin-top: 12px;
   max-width: 98%;
-  border-radius: 4px;
+  border-radius: @radius-border;
   background-color: var(--color-content-background);
   opacity: 0;
   transform: scale(.8);
@@ -131,7 +131,7 @@ onBeforeUnmount(() => {
   max-height: 250px;
   z-index: 10;
   pointer-events: none;
-  filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, .12));
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, .08));
   display: flex;
 
   &:before {

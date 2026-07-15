@@ -252,18 +252,22 @@ export default {
 <style lang="less" module>
 @import '@renderer/assets/styles/layout.less';
 
-@lists-item-height: 36px;
+@lists-item-height: 38px;
 .lists {
   flex: none;
-  width: 16%;
+  width: 200px;
   display: flex;
   flex-flow: column nowrap;
+  border-radius: @radius-card;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: @shadow-sm;
 }
 .listHeader {
   position: relative;
   display: flex;
   flex-flow: row nowrap;
-  border-bottom: var(--color-list-header-border-bottom);
+  border-bottom: 1px solid #eeeeee;
   &:hover {
     .listsAdd {
       opacity: 1;
@@ -272,9 +276,11 @@ export default {
 }
 .listsTitle {
   flex: auto;
-  font-size: 12px;
-  line-height: 38px;
-  padding: 0 10px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 44px;
+  padding: 0 14px;
+  color: #1a1a1a;
   .mixin-ellipsis-1();
 }
 .headerBtns {

@@ -69,7 +69,7 @@ const handleUpdateSpeed = (value) => {
     top: 0;
     height: 1px;
     width: 100%;
-    border-top: 1px dashed var(--color-primary-light-100-alpha-700);
+    border-top: 1px dashed #eeeeee;
   }
 }
 .header {

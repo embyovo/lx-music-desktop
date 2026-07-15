@@ -1,24 +1,43 @@
 @import './colors.less';
 
 
-// Width
-@width-app-left: 6.6%;
+// Width (固定侧边栏宽度)
+@width-app-left: 235px;
 
 // Height
-@height-toolbar: 54px;
-@height-player: 66px;
+@height-toolbar: 72px;
+@height-player: 94px;
+
+// 内容区内边距
+@padding-view-x: 24px;
+@padding-view-y: 6px;
 
 
 // Shadow
 @shadow-app: 8px;
 
+// Box shadows (极柔和，贴近参考图的轻盈感)
+@shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+@shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+@shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.08);
 
-// Radius
-@radius-progress-border: 5px;
-@radius-border: 4px;
+// Spacing
+@spacing-xs: 4px;
+@spacing-sm: 8px;
+@spacing-md: 16px;
+@spacing-lg: 24px;
+@spacing-xl: 32px;
+
+
+// Radius (参考图：卡片大圆角16px，封面12px，组件8px)
+@radius-progress-border: 8px;
+@radius-border: 8px;
+@radius-card: 16px;
+@radius-cover: 12px;
+@radius-pill: 999px;
 
 @transition-slow: .6s ease;
 @transition-normal: .4s ease;
 @transition-fast: .3s ease;
 
-@form-radius: 3px;
+@form-radius: 8px;

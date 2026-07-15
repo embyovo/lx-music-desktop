@@ -96,7 +96,6 @@
     />
     <common-download-modal v-model:show="isShowDownload" :music-info="selectedDownloadMusicInfo" teleport="#view" :list-id="listId" />
     <common-download-multiple-modal v-model:show="isShowDownloadMultiple" :list="selectedList" teleport="#view" :list-id="listId" @confirm="removeAllSelect" />
-    <search-list :list="list" :visible="isShowSearchBar" @action="handleMusicSearchAction" />
     <music-sort-modal v-model:show="isShowMusicSortModal" :music-info="selectedSortMusicInfo" :selected-num="selectedNum" @confirm="sortMusic" />
     <music-toggle-modal v-model:show="isShowMusicToggleModal" :music-info="selectedToggleMusicInfo" @toggle="toggleSource" />
     <base-menu v-model="isShowItemMenu" :menus="menus" :xy="menuLocation" item-name="name" @menu-click="handleMenuClick" />
@@ -106,7 +105,6 @@
 <script>
 import { clipboardWriteText } from '@common/utils/electron'
 import { assertApiSupport } from '@renderer/store/utils'
-import SearchList from './components/SearchList.vue'
 import MusicSortModal from './components/MusicSortModal.vue'
 import MusicToggleModal from './components/MusicToggleModal.vue'
 import useListInfo from './useListInfo'
@@ -117,14 +115,13 @@ import useMusicDownload from './useMusicDownload'
 import useMusicAdd from './useMusicAdd'
 import useSort from './useSort'
 import useMusicActions from './useMusicActions'
-import useSearch from './useSearch'
 import useListScroll from './useListScroll'
 import useMusicToggle from './useMusicToggle'
 import { appSetting } from '@renderer/store/setting'
+import { watch } from '@common/utils/vueTools'
 export default {
   name: 'MusicList',
   components: {
-    SearchList,
     MusicSortModal,
     MusicToggleModal,
   },
@@ -134,7 +131,7 @@ export default {
       required: true,
     },
   },
-  emits: ['show-menu'],
+  emits: ['show-menu', 'list-count', 'list-data'],
   setup(props, { emit }) {
     const actionButtonsVisible = appSetting['list.actionButtonsVisible']
 
@@ -240,16 +237,6 @@ export default {
       handleRemoveMusic,
     })
 
-    const {
-      isShowSearchBar,
-      searchList,
-      handleMusicSearchAction,
-    } = useSearch({
-      setSelectedIndex,
-      handlePlayMusic,
-      listRef,
-    })
-
     const { saveListPosition, restoreScroll } = useListScroll({ props, listRef, list, handleRestoreScroll })
 
 
@@ -299,6 +286,28 @@ export default {
     const scrollToTop = () => {
       listRef.value.scrollTo(0, true)
     }
+    const playFromStart = () => {
+      if (!list.value.length) return
+      handlePlayMusic(0, true)
+    }
+    const playRandom = () => {
+      if (!list.value.length) return
+      handlePlayMusic(Math.floor(Math.random() * list.value.length), true)
+    }
+    const locateMusic = (index, isPlay = false) => {
+      if (index < 0 || index >= list.value.length) return
+      if (isPlay) handlePlayMusic(index)
+      listRef.value?.scrollToIndex(index, -150, true, () => {
+        setSelectedIndex(index)
+        setTimeout(() => {
+          setSelectedIndex(-1)
+        }, 600)
+      })
+    }
+    watch(list, value => {
+      emit('list-count', value.length)
+      emit('list-data', value)
+    }, { immediate: true })
 
     return {
       listItemHeight,
@@ -337,10 +346,9 @@ export default {
       selectedDownloadMusicInfo,
 
       scrollToTop,
-
-      isShowSearchBar,
-      searchList,
-      handleMusicSearchAction,
+      playFromStart,
+      playRandom,
+      locateMusic,
 
       list,
       playerInfo,
@@ -369,6 +377,9 @@ export default {
   flex: auto;
   display: flex;
   flex-flow: column nowrap;
+  border-radius: @radius-card;
+  background-color: #ffffff;
+  box-shadow: @shadow-sm;
 
   :global(.list-item) {
     &.active {

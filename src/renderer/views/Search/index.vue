@@ -121,22 +121,31 @@ export default {
 </script>
 
 <style lang="less" module>
+@import '@renderer/assets/styles/layout.less';
+
 .container {
   display: flex;
   flex-flow: column nowrap;
+  height: 100%;
+  gap: @spacing-md;
 }
 
 .header {
-  // padding: 5px 0;
   flex: none;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  align-items: center;
+  padding: 0 @spacing-xs;
 }
 
 .main {
   position: relative;
   flex: auto;
-  // min-height: 0;
+  min-height: 0;
+  border-radius: @radius-card;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: @shadow-sm;
 }
 </style>

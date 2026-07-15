@@ -52,7 +52,7 @@ onBeforeUnmount(() => {
 @import '@renderer/assets/styles/layout.less';
 
 @control-btn-width: @height-toolbar * .26;
-@control-btn-height: 6%;
+@control-btn-height: 7%;
 .controlBtn {
   box-sizing: border-box;
   padding: 0 7px;
@@ -65,7 +65,7 @@ onBeforeUnmount(() => {
   opacity: .5;
   transition: opacity @transition-normal;
   &.hover {
-    opacity: .8;
+    opacity: .85;
     .controlBtniIcon {
       opacity: 1;
     }
